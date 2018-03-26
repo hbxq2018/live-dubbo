@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.live.dubbo.dao.ShopDao">
+  <resultMap id="BaseResultMap" type="com.xq.live.dubbo.model.Shop">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="shop_name" jdbcType="VARCHAR" property="shopName" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="index_url" jdbcType="VARCHAR" property="indexUrl" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+    <result column="shop_info" jdbcType="VARCHAR" property="shopInfo" />
+    <result column="location_x" jdbcType="DECIMAL" property="locationX" />
+    <result column="location_y" jdbcType="DECIMAL" property="locationY" />
+    <result column="is_deleted" jdbcType="TINYINT" property="isDeleted" />
+    <result column="apply_status" jdbcType="TINYINT" property="applyStatus" />
+    <result column="shop_status" jdbcType="TINYINT" property="shopStatus" />
+    <result column="pop_num" jdbcType="INTEGER" property="popNum" />
+    <result column="address_id" jdbcType="BIGINT" property="addressId" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="business_cate" jdbcType="VARCHAR" property="businessCate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, shop_name, city, address, mobile, phone, index_url, logo_url, shop_info, location_x, 
+    location_y, is_deleted, apply_status, shop_status, pop_num, address_id, remark, create_time, 
+    update_time, business_cate
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from shop
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from shop
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.live.dubbo.model.Shop">
+    insert into shop (id, shop_name, city, 
+      address, mobile, phone, 
+      index_url, logo_url, shop_info, 
+      location_x, location_y, is_deleted, 
+      apply_status, shop_status, pop_num, 
+      address_id, remark, create_time, 
+      update_time, business_cate)
+    values (#{id,jdbcType=BIGINT}, #{shopName,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{indexUrl,jdbcType=VARCHAR}, #{logoUrl,jdbcType=VARCHAR}, #{shopInfo,jdbcType=VARCHAR}, 
+      #{locationX,jdbcType=DECIMAL}, #{locationY,jdbcType=DECIMAL}, #{isDeleted,jdbcType=TINYINT}, 
+      #{applyStatus,jdbcType=TINYINT}, #{shopStatus,jdbcType=TINYINT}, #{popNum,jdbcType=INTEGER}, 
+      #{addressId,jdbcType=BIGINT}, #{remark,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{businessCate,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.live.dubbo.model.Shop">
+    insert into shop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="shopName != null">
+        shop_name,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="indexUrl != null">
+        index_url,
+      </if>
+      <if test="logoUrl != null">
+        logo_url,
+      </if>
+      <if test="shopInfo != null">
+        shop_info,
+      </if>
+      <if test="locationX != null">
+        location_x,
+      </if>
+      <if test="locationY != null">
+        location_y,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="applyStatus != null">
+        apply_status,
+      </if>
+      <if test="shopStatus != null">
+        shop_status,
+      </if>
+      <if test="popNum != null">
+        pop_num,
+      </if>
+      <if test="addressId != null">
+        address_id,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="businessCate != null">
+        business_cate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="shopName != null">
+        #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="indexUrl != null">
+        #{indexUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="shopInfo != null">
+        #{shopInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="locationX != null">
+        #{locationX,jdbcType=DECIMAL},
+      </if>
+      <if test="locationY != null">
+        #{locationY,jdbcType=DECIMAL},
+      </if>
+      <if test="isDeleted != null">
+        #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="applyStatus != null">
+        #{applyStatus,jdbcType=TINYINT},
+      </if>
+      <if test="shopStatus != null">
+        #{shopStatus,jdbcType=TINYINT},
+      </if>
+      <if test="popNum != null">
+        #{popNum,jdbcType=INTEGER},
+      </if>
+      <if test="addressId != null">
+        #{addressId,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessCate != null">
+        #{businessCate,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.live.dubbo.model.Shop">
+    update shop
+    <set>
+      <if test="shopName != null">
+        shop_name = #{shopName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="indexUrl != null">
+        index_url = #{indexUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="shopInfo != null">
+        shop_info = #{shopInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="locationX != null">
+        location_x = #{locationX,jdbcType=DECIMAL},
+      </if>
+      <if test="locationY != null">
+        location_y = #{locationY,jdbcType=DECIMAL},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=TINYINT},
+      </if>
+      <if test="applyStatus != null">
+        apply_status = #{applyStatus,jdbcType=TINYINT},
+      </if>
+      <if test="shopStatus != null">
+        shop_status = #{shopStatus,jdbcType=TINYINT},
+      </if>
+      <if test="popNum != null">
+        pop_num = #{popNum,jdbcType=INTEGER},
+      </if>
+      <if test="addressId != null">
+        address_id = #{addressId,jdbcType=BIGINT},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="businessCate != null">
+        business_cate = #{businessCate,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.live.dubbo.model.Shop">
+    update shop
+    set shop_name = #{shopName,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      mobile = #{mobile,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      index_url = #{indexUrl,jdbcType=VARCHAR},
+      logo_url = #{logoUrl,jdbcType=VARCHAR},
+      shop_info = #{shopInfo,jdbcType=VARCHAR},
+      location_x = #{locationX,jdbcType=DECIMAL},
+      location_y = #{locationY,jdbcType=DECIMAL},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      apply_status = #{applyStatus,jdbcType=TINYINT},
+      shop_status = #{shopStatus,jdbcType=TINYINT},
+      pop_num = #{popNum,jdbcType=INTEGER},
+      address_id = #{addressId,jdbcType=BIGINT},
+      remark = #{remark,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      business_cate = #{businessCate,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

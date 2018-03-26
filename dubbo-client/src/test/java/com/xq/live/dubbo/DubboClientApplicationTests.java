@@ -12,5 +12,4 @@ public class DubboClientApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }

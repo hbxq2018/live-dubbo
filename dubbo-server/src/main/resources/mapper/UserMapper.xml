@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.live.dubbo.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.xq.live.dubbo.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="location_x" jdbcType="DECIMAL" property="locationX" />
+    <result column="location_y" jdbcType="DECIMAL" property="locationY" />
+    <result column="sex" jdbcType="INTEGER" property="sex" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="user_type" jdbcType="TINYINT" property="userType" />
+    <result column="shop_id" jdbcType="BIGINT" property="shopId" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="login_times" jdbcType="INTEGER" property="loginTimes" />
+    <result column="user_ip" jdbcType="VARCHAR" property="userIp" />
+    <result column="source_type" jdbcType="TINYINT" property="sourceType" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, user_name, open_id, password, nick_name, icon_url, mobile, location_x, location_y, 
+    sex, birthday, user_type, shop_id, create_time, update_time, last_login_time, login_times, 
+    user_ip, source_type
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.live.dubbo.model.User">
+    insert into user (id, user_name, open_id, 
+      password, nick_name, icon_url, 
+      mobile, location_x, location_y, 
+      sex, birthday, user_type, 
+      shop_id, create_time, update_time, 
+      last_login_time, login_times, user_ip, 
+      source_type)
+    values (#{id,jdbcType=BIGINT}, #{userName,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{iconUrl,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{locationX,jdbcType=DECIMAL}, #{locationY,jdbcType=DECIMAL}, 
+      #{sex,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, #{userType,jdbcType=TINYINT}, 
+      #{shopId,jdbcType=BIGINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{loginTimes,jdbcType=INTEGER}, #{userIp,jdbcType=VARCHAR}, 
+      #{sourceType,jdbcType=TINYINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.live.dubbo.model.User">
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="iconUrl != null">
+        icon_url,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="locationX != null">
+        location_x,
+      </if>
+      <if test="locationY != null">
+        location_y,
+      </if>
+      <if test="sex != null">
+        sex,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="shopId != null">
+        shop_id,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="loginTimes != null">
+        login_times,
+      </if>
+      <if test="userIp != null">
+        user_ip,
+      </if>
+      <if test="sourceType != null">
+        source_type,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="iconUrl != null">
+        #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="locationX != null">
+        #{locationX,jdbcType=DECIMAL},
+      </if>
+      <if test="locationY != null">
+        #{locationY,jdbcType=DECIMAL},
+      </if>
+      <if test="sex != null">
+        #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=TINYINT},
+      </if>
+      <if test="shopId != null">
+        #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTimes != null">
+        #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="userIp != null">
+        #{userIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceType != null">
+        #{sourceType,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.live.dubbo.model.User">
+    update user
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        nick_name = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="iconUrl != null">
+        icon_url = #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="locationX != null">
+        location_x = #{locationX,jdbcType=DECIMAL},
+      </if>
+      <if test="locationY != null">
+        location_y = #{locationY,jdbcType=DECIMAL},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=TINYINT},
+      </if>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=BIGINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginTimes != null">
+        login_times = #{loginTimes,jdbcType=INTEGER},
+      </if>
+      <if test="userIp != null">
+        user_ip = #{userIp,jdbcType=VARCHAR},
+      </if>
+      <if test="sourceType != null">
+        source_type = #{sourceType,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
